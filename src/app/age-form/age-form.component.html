@@ -1,0 +1,117 @@
+<div class="age-form-container">
+    <form [formGroup]="ageForm" (ngSubmit)="onSubmit()" #localForm="ngForm">
+
+        <div class="form-grid">
+            
+            <div [ngClass]="{invalid: ageForm.get('day')?.invalid && (ageForm.get('day')?.hasError('min') || ageForm.get('day')?.hasError('max')) || localForm.submitted && ageForm.get('day')?.hasError('required') || localForm.submitted && ageForm.get('day')?.hasError('dateError') }">
+                <label for="day">Day</label>
+                <input id="day" type="number" formControlName="day" placeholder="DD">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('day')?.hasError('required')">This field is required</small>
+                    <small *ngIf="localForm.submitted && ageForm.get('day')?.hasError('dateError') && ageForm.get('month')?.hasError('dateError')">Must be a valid date</small>
+                    <small *ngIf="(ageForm.get('day')?.hasError('min') || ageForm.get('day')?.hasError('max'))">Must be a valid day</small>
+                </div>    
+            </div>
+            
+            <div [ngClass]="{invalid: (ageForm.get('month')?.hasError('min') || ageForm.get('month')?.hasError('max')) || localForm.submitted && ageForm.get('month')?.hasError('required') || localForm.submitted && ageForm.get('month')?.hasError('dateError') }">
+                <label for="month">Month</label>
+                <input id="month" type="number" formControlName="month" placeholder="MM">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('month')?.hasError('required')">This field is required</small>
+                    <small *ngIf="(ageForm.get('month')?.hasError('min') || ageForm.get('month')?.hasError('max'))">Must be a valid month</small>
+                </div>
+            </div>
+    
+            <div [ngClass]="{invalid: (ageForm.get('year')?.hasError('min') || ageForm.get('year')?.hasError('max')) || localForm.submitted && ageForm.get('year')?.hasError('required') || localForm.submitted && ageForm.get('day')?.hasError('dateError') && ageForm.get('month')?.hasError('dateError') }">
+                <label for="year">Year</label>
+                <input id="year" type="number" formControlName="year" placeholder="YYYY">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('year')?.hasError('required')">This field is required</small>
+                    <small *ngIf="ageForm.get('year')?.invalid && (ageForm.get('year')?.hasError('min') || ageForm.get('year')?.hasError('max'))">Must be a valid year</small>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit" title="Submit"><!--[disabled]="ageForm.invalid"-->
+                <img class="submit-button-img" src="assets/images/icon-arrow.svg" alt="Submit" />
+            </button>
+        </div>
+    </form>
+
+    <section>
+        <app-results [monthsPassed]="monthsPassed" [daysPassed]="daysPassed" [yearsPassed]="yearsPassed" [ageForm]="ageForm" [localForm]="localForm"></app-results>
+    </section>
+
+</div>
+
+<!--
+
+    // everything in ageForm component - had to problem with dashes logic here - changed to use daysPassed etc variables instead
+
+    <div class="age-form-container">
+    <form [formGroup]="ageForm" (ngSubmit)="onSubmit()" #localForm="ngForm">
+
+        <div class="form-grid">
+            
+            <div [ngClass]="{invalid: ageForm.get('day')?.invalid && (ageForm.get('day')?.hasError('min') || ageForm.get('day')?.hasError('max')) || localForm.submitted && ageForm.get('day')?.hasError('required') || localForm.submitted && ageForm.get('day')?.hasError('dateError') }">
+                <label for="day">Day</label>
+                <input id="day" type="number" formControlName="day" placeholder="DD">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('day')?.hasError('required')">This field is required</small>
+                    <small *ngIf="localForm.submitted && ageForm.get('day')?.hasError('dateError') && ageForm.get('month')?.hasError('dateError')">Must be a valid date</small>
+                    <small *ngIf="(ageForm.get('day')?.hasError('min') || ageForm.get('day')?.hasError('max'))">Must be a valid day</small>
+                </div>    
+            </div>
+            
+            <div [ngClass]="{invalid: (ageForm.get('month')?.hasError('min') || ageForm.get('month')?.hasError('max')) || localForm.submitted && ageForm.get('month')?.hasError('required') || localForm.submitted && ageForm.get('month')?.hasError('dateError') }">
+                <label for="month">Month</label>
+                <input id="month" type="number" formControlName="month" placeholder="MM">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('month')?.hasError('required')">This field is required</small>
+                    <small *ngIf="(ageForm.get('month')?.hasError('min') || ageForm.get('month')?.hasError('max'))">Must be a valid month</small>
+                </div>
+            </div>
+    
+            <div [ngClass]="{invalid: (ageForm.get('year')?.hasError('min') || ageForm.get('year')?.hasError('max')) || localForm.submitted && ageForm.get('year')?.hasError('required') || localForm.submitted && ageForm.get('day')?.hasError('dateError') && ageForm.get('month')?.hasError('dateError') }">
+                <label for="year">Year</label>
+                <input id="year" type="number" formControlName="year" placeholder="YYYY">
+                <div class="errors-container">
+                    <small *ngIf="localForm.submitted && ageForm.get('year')?.hasError('required')">This field is required</small>
+                    <small *ngIf="ageForm.get('year')?.invalid && (ageForm.get('year')?.hasError('min') || ageForm.get('year')?.hasError('max'))">Must be a valid year</small>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit" title="Submit">
+                <img class="submit-button-img" src="assets/images/icon-arrow.svg" alt="Submit" />
+            </button>
+        </div>
+    </form>
+
+    <section>
+        <div>
+            <div>
+                <div class="result-div">
+                    <span class="ticks" *ngIf="ageForm.get('year')?.invalid || ageForm.get('day')?.invalid || ageForm.get('month')?.invalid || !localForm.submitted">- -</span>
+                    <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid">{{yearsPassed}} </span>
+                    years
+                </div> 
+            </div>
+            <div>
+                <div class="result-div">
+                    <span class="ticks" *ngIf="ageForm.get('year')?.invalid || ageForm.get('day')?.invalid || ageForm.get('month')?.invalid || !localForm.submitted">- -</span>
+                    <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid">{{monthsPassed}} </span>
+                    months
+                </div> 
+            </div>
+            <div>
+                <div class="result-div">
+                    <span class="ticks" *ngIf="ageForm.get('year')?.invalid || ageForm.get('day')?.invalid || ageForm.get('month')?.invalid || !localForm.submitted">- -</span>
+                    <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid">{{daysPassed}} </span>
+                    days
+                </div> 
+            </div>
+        </div>
+    </section>
+</div>
+-->
