@@ -56,10 +56,6 @@ Users should be able to:
 
 ***
 
-![](screenshots/age-calculator-leap-year-results.png)
-
-***
-
 ![](screenshots/age-calculator-mobile.png)
 
 ***
