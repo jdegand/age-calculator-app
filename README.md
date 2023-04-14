@@ -6,6 +6,7 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
+  - [Link](#link)
   - [Screenshots](#screenshots)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -30,7 +31,11 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: See the age numbers animate to their final number when the form is submitted
 
-### Screenshots
+### Link
+
+[Github Pages](https://jdegand.github.io/age-calculator-app/)
+
+### Screenshots 
 
 ![](screenshots/age-calculator-app-desktop-1.png)
 
@@ -52,11 +57,15 @@ Users should be able to:
 
 ***
 
-![](screenshots/age-calculator-leap-year-results.png "Valid leap year date")
+![](screenshots/age-calculator-leap-year-valid.png "Valid leap year date error goes away")
 
 ***
 
-![](screenshots/age-calculator-mobile.png)
+![](screenshots/age-calculator-leap-year-results.png "date difference from entered date til April 13 2023")
+
+***
+
+![](screenshots/age-calculator-mobile.png "date difference from entered date til April 13 2023")
 
 ***
 
