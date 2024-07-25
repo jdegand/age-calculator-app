@@ -1,4 +1,4 @@
-import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 export function realDate(day: any, month: any, year: any): ValidatorFn {
     return (form: AbstractControl): { [key: string]: boolean } | null => {
@@ -6,8 +6,8 @@ export function realDate(day: any, month: any, year: any): ValidatorFn {
         const monthValue = form.get(month)?.value;
         const yearValue = form.get(year)?.value;
 
-        if(!dayValue || !monthValue){
-            return {missing: true};
+        if (!dayValue || !monthValue) {
+            return { missing: true };
         }
 
         const daysPerMonth = {
@@ -28,25 +28,25 @@ export function realDate(day: any, month: any, year: any): ValidatorFn {
         // reset errors here?
         // form.get(day)?.setErrors(null);
         // form.get(month)?.setErrors(null);
-    
-        if(monthValue === 2 && checkLeapYear(yearValue)){
-            if(dayValue > 29){
-                const error = {dateError: true};
+
+        if (monthValue === 2 && checkLeapYear(yearValue)) {
+            if (dayValue > 29) {
+                const error = { dateError: true };
                 form.get(day)?.setErrors(error);
                 form.get(month)?.setErrors(error);
                 return error;
             } else {
-                if (form.get('day')?.hasError('dateError') ) {
-                    form.get('day')?.updateValueAndValidity()  
+                if (form.get('day')?.hasError('dateError')) {
+                    form.get('day')?.updateValueAndValidity()
                 }
-    
-                if (form.get('month')?.hasError('dateError') ) {
-                    form.get('month')?.updateValueAndValidity()  
+
+                if (form.get('month')?.hasError('dateError')) {
+                    form.get('month')?.updateValueAndValidity()
                 }
                 return null;
             }
         } else if (dayValue > daysPerMonth[monthValue as keyof Object]) {
-            const error = {dateError: true};
+            const error = { dateError: true };
             form.get(day)?.setErrors(error);
             form.get(month)?.setErrors(error);
             return error;
@@ -62,14 +62,14 @@ export function realDate(day: any, month: any, year: any): ValidatorFn {
             
             */
 
-            if (form.get('day')?.hasError('dateError') ) {
-                form.get('day')?.updateValueAndValidity()  
+            if (form.get('day')?.hasError('dateError')) {
+                form.get('day')?.updateValueAndValidity()
             }
 
-            if (form.get('month')?.hasError('dateError') ) {
-                form.get('month')?.updateValueAndValidity()  
+            if (form.get('month')?.hasError('dateError')) {
+                form.get('month')?.updateValueAndValidity()
             }
-       
+
             return null;
         }
 
