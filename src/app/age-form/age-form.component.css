@@ -48,28 +48,12 @@ label {
     width: 44px;
     height: 44px;
 }
-/*
-.result-div {
-    color: var(--OffBlack);
-    font-size: 60px;
-    font-weight: 700;
-    font-family: PoppinsExtraBold;
-}
-
-.valid-number {
-    color: var(--Purple);
-}
-
-.ticks {
-    color: var(--Purple);
-}
-*/
 
 small {
     color: var(--LightRed);
     font-weight: bold;
     display: block;
-    font-family: PoppinsItalic;
+    font-family: PoppinsItalic, sans-serif;
     padding-top: 10px;
 }
 
