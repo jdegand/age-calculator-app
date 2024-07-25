@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent {
-  @Input() daysPassed:any;
-  @Input() monthsPassed:any;
-  @Input() yearsPassed:any;
-  @Input() ageForm:any;
-  @Input() localForm:any;
+  @Input() daysPassed: any;
+  @Input() monthsPassed: any;
+  @Input() yearsPassed: any;
+  @Input() ageForm: any;
+  @Input() localForm: any;
 }

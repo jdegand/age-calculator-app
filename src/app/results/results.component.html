@@ -3,23 +3,26 @@
         <div>
             <div class="result-div">
                 <span class="ticks" *ngIf="yearsPassed === undefined">- -</span>
-                <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid || yearsPassed !== undefined">{{yearsPassed}} </span>
+                <span class="valid-number"
+                    *ngIf="localForm.submitted && ageForm.valid || yearsPassed !== undefined">{{yearsPassed}} </span>
                 years
-            </div> 
+            </div>
         </div>
         <div>
             <div class="result-div">
                 <span class="ticks" *ngIf="monthsPassed === undefined">- -</span>
-                <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid || monthsPassed !== undefined">{{monthsPassed}} </span>
+                <span class="valid-number"
+                    *ngIf="localForm.submitted && ageForm.valid || monthsPassed !== undefined">{{monthsPassed}} </span>
                 months
-            </div> 
+            </div>
         </div>
         <div>
             <div class="result-div">
                 <span class="ticks" *ngIf="daysPassed === undefined">- -</span>
-                <span class="valid-number" *ngIf="localForm.submitted && ageForm.valid || daysPassed !== undefined">{{daysPassed}} </span>
+                <span class="valid-number"
+                    *ngIf="localForm.submitted && ageForm.valid || daysPassed !== undefined">{{daysPassed}} </span>
                 days
-            </div> 
+            </div>
         </div>
     </div>
 </section>
